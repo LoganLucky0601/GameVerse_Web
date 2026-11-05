@@ -1,0 +1,1276 @@
+/* font import*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --orange: #f78b00;
+    --blue: #00285f;
+    --gray: #ededed;
+}
+
+/*Config-Geral*/
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #00285f;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    transition: font-size 0.3s ease;
+}
+
+body {
+    transition: background-color 0.3s;
+}
+
+/* Estilo para modo de contraste */
+body.high-contrast {
+    background-color: #333;
+    color: white;
+}
+
+/* Modificar o header */
+body.high-contrast header {
+    background-color: #222;
+    color: white;
+}
+
+/* Modificar as sections */
+body.high-contrast section {
+    background-color: #333;
+    color: white;
+}
+
+/* Estilo para o footer no modo de contraste */
+body.high-contrast footer {
+    background-color: #444; /* Fundo preto no modo de contraste */
+    color: white; /* Cor do texto branca no modo de contraste */
+}
+
+body.high-contrast footer a {
+    color: #f78b00; /* Links do footer em cor laranja */
+}
+
+/* Modificar o 'last' (último bloco) */
+body.high-contrast .last {
+    background-color: #111;
+    color: white;
+}
+
+/* Modificar os links */
+body.high-contrast a {
+    color: #f78b00; /* Links em laranja */
+}
+
+/* Alterando o comportamento dos ícones no footer */
+body.high-contrast .footer-social img {
+    filter: brightness(0) invert(1); /* Inverter cores para ícones sociais visíveis */
+}
+
+/* Modificar o texto nos botões */
+body.high-contrast button {
+    background-color: #555;
+    color: white;
+}
+
+body.high-contrast .review-card {
+    transition: background-color 0.3s;
+    background-color: #333;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+body.high-contrast .review-card strong {
+    color: white;
+}
+
+body.high-contrast section#average-rating.average-rating {
+    background-color: #333;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+body.high-contrast section#average-rating.average-rating h3 {
+    color: white;
+}
+body.high-contrast section#average-rating.average-rating p {
+    color: white;
+}
+body.high-contrast section#average-rating.average-rating .average-score {
+    color: white;
+}
+
+body.high-contrast .add-review .message {
+    background-color: #666;
+    color: white;
+}
+body.high-contrast .add-review .message p {
+    color: white;
+}
+
+body.high-contrast .download-buttons .btn {
+    background-color: #666;
+    color: white;
+}
+
+body.high-contrast .hero .hero-content button {
+    background-color: #666;
+    color: white;
+    transition: background-color 0.3s;
+}
+body.high-contrast .hero .favorite-container {
+    background-color: #666;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+body.high-contrast .main .about-content .about-image {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+body.high-contrast .review button {
+    background-color: #666;
+    transition: background-color 0.3s;
+    color: white;
+}
+
+/* Modificar o painel de acessibilidade */
+body.high-contrast .accessibility-controls {
+    background-color: #444;
+    color: white;
+}
+
+body.high-contrast #open-accessibility button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar os links no footer */
+body.high-contrast .footer-links h4,
+body.high-contrast .footer-links h6 {
+    color: white;
+}
+
+/* Estilo do botão quando o modo de alto contraste está ativado */
+body.high-contrast #open-accessibility {
+    background-color: #f78b00; /* Cor de fundo laranja */
+    color: white; /* Cor do texto em branco */
+}
+
+/* Estilo do botão quando o modo de contraste não está ativado */
+body:not(.high-contrast) #open-accessibility {
+    background-color: #fff;
+    color: black;
+}
+
+
+/* Estilo do painel de acessibilidade */
+.accessibility-controls {
+    font-size: 16px;
+    position: fixed;
+    bottom: 80px; /* Distância inicial de onde o botão está */
+    right: 20px; /* Posiciona à direita */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(228, 226, 223, 0.5);
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(20px); /* Inicialmente movido para baixo */
+    visibility: hidden; /* Inicialmente oculto */
+    transition: opacity 0.5s ease, transform 0.5s ease-in-out; /* Animações de opacidade e movimento */
+    z-index: 9999;
+}
+
+/* Mostrar o painel com animação */
+.accessibility-controls.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* Ao aparecer, o painel desliza para o lugar correto */
+}
+
+/* Estilo para o botão de abrir acessibilidade */
+#open-accessibility {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(205, 142, 17, 0.5);
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Estilo para o botão de fechar */
+#close-accessibility {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.accessibility-controls button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+ 
+/*Cabeçalho*/
+
+header {
+    width: 100%;
+    height: 150px;
+    background: white;
+    box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    max-width: 1000px;
+    min-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/*Navegação*/
+
+nav {
+    width: 100%;
+    height: 125px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font-size: 24px;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+.brand a {
+    text-decoration: none;
+}
+
+.brand a:visited {
+    color: inherit;
+    /* Garante que a cor não mude após clicar */
+}
+
+nav .brand .logo {
+    width: 130px;
+    height: 130px;
+    margin-left: 20px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* Alinha todos os itens verticalmente ao centro */
+    justify-content: flex-start;
+    /* Alinha à esquerda */
+    margin-right: 20px;
+    /* Garantir um pequeno espaço da direita */
+}
+
+nav ul li {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* Alinha o texto e o ícone no centro */
+}
+
+nav ul li span {
+    color: var(--orange);
+    /* Cor do texto */
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+nav ul li a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #00285f83;
+}
+
+nav ul button {
+    border: 1px solid var(--blue);
+    background: transparent;
+    padding: 8px 40px;
+    cursor: pointer;
+    margin-left: 30px;
+    color: var(--blue);
+    font-weight: bold;
+    border-radius: 4px;
+
+}
+
+nav ul button:hover {
+    transition: background, color 0.5s;
+    background: var(--blue);
+    color: white;
+}
+
+/* Login/Logout Button Styles */
+.login-button,
+.logout-button {
+    background-color: #4CAF50;
+    /* Cor padrão para o botão de login */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.logout-button {
+    background-color: #f44336;
+    /* Cor para logout */
+}
+
+/* Hover effects */
+.login-button:hover,
+.logout-button:hover {
+    opacity: 0.8;
+}
+
+.content .header-block {
+    max-width: 1000px;
+    min-width: 300px;
+    height: 470px;
+    position: relative;
+    z-index: 10;
+    padding: 10px;
+}
+
+.header-block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+}
+
+.carousel-header {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.imagens-header {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-header img {
+    width: 1000px;
+    height: 470px;
+}
+
+.button-header {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.prev-header {
+    left: 10px;
+}
+
+.next-header {
+    right: 10px;
+}
+
+.fade-header {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade-header {
+    from {
+        opacity: 0.4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Contêiner que agrupa o nome do usuário e o ícone */
+.user-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+
+}
+
+.user-container:hover {
+    transition: 0.3s ease;
+    background-color: rgba(0, 123, 255, 0.1);
+    border-radius: 5px;
+}
+
+/* Ícone do usuário */
+.user-icon {
+    margin-left: 5px;
+    font-size: 14px;
+    color: var(--blue);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    /* Oculto por padrão */
+    position: absolute;
+    top: 35px;
+    /* Alinha abaixo do nome */
+    right: 0;
+    /* Alinha à direita do dropdown */
+    background-color: white;
+    border: 1px solid #ddd;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+/* Links no dropdown */
+.dropdown-menu li {
+    list-style: none;
+    padding: 10px 15px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--blue);
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--orange);
+    color: white;
+    border-radius: 5px;
+}
+
+/* Exibir o menu quando a classe "active" for adicionada */
+.dropdown.active .dropdown-menu {
+    display: block;
+}
+
+/* Início */
+
+section {
+    transition: background-color 0.3s;
+}
+
+.hero {
+    position: relative;
+    /* Necessário para sobrepor o conteúdo sobre o vídeo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+    overflow: hidden;
+    /* Garante que nada saia da área visível */
+}
+
+.hero #hero-video {
+    position: absolute;
+    /* Coloca o vídeo atrás do conteúdo */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Faz o vídeo cobrir toda a área da .hero */
+    z-index: 1;
+    /* Coloca o vídeo atrás do conteúdo */
+    opacity: 0.1;
+    /* Ajuste de transparência */
+}
+
+.hero .hero-content {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 1;
+    /* Garante que o conteúdo fique acima do vídeo */
+}
+
+.hero .hero-image {
+    max-width: 100%;
+    width: 500px;
+    border-radius: 8px;
+    height: auto;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero .download-btn {
+    background-color: #f39c12;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero .download-btn:hover {
+    background-color: #bd671c;
+}
+
+/* Conteiner de Favoritos */
+
+.favorite-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #004cb6;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.favorite-container:hover {
+    background-color: #00409b;
+}
+
+.favorite-icon {
+    font-size: 30px;
+    color: #ccc;
+    margin-right: 10px;
+}
+
+#favorite-text {
+    font-size: 16px;
+}
+
+/* About Section */
+.about {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-image {
+    max-width: 40%;
+    border-radius: 8px;
+}
+
+.about p {
+    max-width: 50%;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Estilo para o formulário de avaliação */
+.add-review {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.add-review h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.add-review form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-review form label {
+    font-size: 16px;
+    color: #333;
+}
+
+.add-review form select,
+.add-review form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    height: 100px;
+}
+
+.add-review form select:focus,
+.add-review form textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.add-review form textarea {
+    resize: vertical;
+}
+
+.add-review form button {
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-review form button:hover {
+    background-color: #0056b3;
+}
+
+.add-review form p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 15px;
+}
+
+.add-review form p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.add-review form p a:hover {
+    text-decoration: underline;
+}
+
+/* Estilizando as mensagens dentro da seção add-review */
+.add-review .message {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.add-review .message p {
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+/* Mensagens de erro/sucesso */
+.error-message,
+.success-message {
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: none;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.success-message.show,
+.error-message.show {
+    display: block;
+}
+
+/* Estilo para a seção de avaliações já feitas */
+.reviews-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.reviews-section h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.reviews h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.review-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 9px 0;
+    border-radius: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review-card p {
+    margin: 5px 0;
+}
+
+.review-card strong {
+    font-weight: bold;
+    color: #333;
+}
+
+
+.review {
+    border-bottom: 1px solid #f8f8f8;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review .nota {
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+    /* Verde para indicar uma boa avaliação */
+}
+
+.review .comentario {
+    font-size: 16px;
+    color: #555;
+}
+
+.review .data {
+    font-size: 14px;
+    color: #888;
+    margin-top: 10px;
+}
+
+.review .nota,
+.review .comentario,
+.review .data {
+    margin-left: 10px;
+}
+
+.review .nota {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.review .nota .star-rating {
+    display: inline-block;
+    font-size: 18px;
+    color: #f5b300;
+    /* Cor amarela para estrelas */
+}
+
+.review .nota .star-rating span {
+    display: inline-block;
+    padding: 0 2px;
+}
+
+.review .nota .star-rating span.filled {
+    color: #f5b300;
+    /* Estrelas preenchidas */
+}
+
+.review .nota .star-rating span.empty {
+    color: #ccc;
+    /* Estrelas vazias */
+}
+
+.review .comentario {
+    font-style: italic;
+}
+
+.review .nota .star-rating {
+    display: inline-block;
+    font-size: 18px; /* Ajuste o tamanho do ícone conforme necessário */
+    color: #f5b300; /* Cor das estrelas cheias */
+}
+
+.review .nota .star-rating i {
+    margin-right: 30px; /* Espaço entre as estrelas */
+}
+
+.review .nota .star-rating .far.fa-star {
+    color: #e8f800; /* Cor para as estrelas vazias */
+}
+
+.star-rating i {
+    font-size: 20px;
+    color: #ccc; /* Cor padrão para estrelas vazias */
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .star-rating i:hover {
+    color: #f5b300; /* Cor das estrelas ao passar o mouse */
+    transform: scale(1.2); /* Aumenta o tamanho da estrela */
+  }
+  
+  .star-rating i.fas {
+    color: #f5b300; /* Cor para estrelas preenchidas */
+  }
+  
+/* Seção de aviso para avaliações ainda não feitas */
+.no-reviews-message {
+    font-size: 16px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Gallery Section */
+.gallery {
+    background-color: #ecf0f1;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.carousel img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo do Modal */
+.modal {
+    display: none;
+    /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Fundo escuro semi-transparente */
+}
+
+/* Conteúdo da imagem no modal */
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+    max-height: 80%;
+    animation: zoomIn 0.3s ease;
+}
+
+/* Animação de zoom */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Legenda abaixo da imagem */
+#caption {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Botão de fechar */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #ff0000;
+}
+
+
+/* Download Section */
+.download {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.download h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.download p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.download-buttons .btn {
+    background-color: #f39c12;
+    border-radius: 8px;
+    border: none;
+    padding: 15px 25px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+}
+
+.download-buttons .btn:hover {
+    background-color: #e67e22;
+}
+
+.download-buttons .btn img {
+    width: 30px;
+    height: 30px;
+}
+
+#show-all-reviews {
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white;              /* Cor do texto */
+    font-size: 16px;           /* Tamanho da fonte */
+    padding: 12px 20px;        /* Espaçamento interno */
+    border: none;              /* Sem borda */
+    border-radius: 5px;        /* Bordas arredondadas */
+    cursor: pointer;          /* Cursor de ponteiro quando passar por cima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+    margin-left: 10px;        /* Espaçamento à esquerda */
+}
+
+#show-all-reviews:hover {
+    background-color: #0056b3; /* Cor de fundo quando passar o mouse */
+    transform: scale(1.05);     /* Leve aumento do tamanho */
+}
+
+#show-all-reviews:active {
+    background-color: #004085; /* Cor de fundo quando o botão for pressionado */
+    transform: scale(1);       /* Retorna ao tamanho normal */
+}
+
+#show-all-reviews:focus {
+    outline: none;             /* Retira a borda de foco */
+}
+
+.game-star-rating {
+    display: flex;
+    cursor: pointer;
+    font-size: 25px; /* Tamanho das estrelas */
+  }
+  
+  .game-star-rating i {
+    color: #ccc; /* Cor das estrelas vazias (cinza claro) */
+    margin: 0 5px;
+    transition: color 0.2s; /* Efeito suave de transição */
+  }
+
+  .star-rating-med {
+    color: #FFD700; /* Cor dourada para as estrelas */
+    font-size: 1.5rem;
+    margin-left: 10px;
+  }
+  
+  .star-rating-med i {
+    margin-right: 2px;
+  }  
+  
+  .game-star-rating i.selected {
+    color: #f39c12; /* Cor dourada para as estrelas selecionadas */
+  }
+  
+  .game-star-rating i.hovered {
+    color: #f39c12; /* Cor dourada para as estrelas durante o hover */
+  }
+
+/* Estilo para a seção de média das avaliações */
+#average-rating {
+    background-color: #f9f9f9;  /* Cor de fundo suave */
+    border: 1px solid #ddd;     /* Borda cinza clara */
+    border-radius: 10px;        /* Bordas arredondadas */
+    padding: 20px;              /* Espaçamento interno */
+    text-align: center;         /* Centralizar o conteúdo */
+    max-width: 600px;           /* Largura máxima */
+    margin: 20px auto;          /* Margem automática para centralizar */
+}
+
+/* Estilo do título "Média das Avaliações" */
+#average-rating h3 {
+    font-size: 1.6rem;          /* Tamanho da fonte */
+    color: #333;                /* Cor escura */
+    margin-bottom: 10px;        /* Espaço abaixo do título */
+}
+
+/* Estilo do parágrafo que exibe a média */
+#average-rating p {
+    font-size: 1.2rem;          /* Tamanho da fonte */
+    color: #666;                /* Cor do texto */
+    margin-top: 10px;           /* Espaço superior */
+}
+
+/* Estilo das estrelas na média */
+.star-rating-med {
+    color: #FFD700;             /* Cor dourada para as estrelas */
+    font-size: 1.4rem;          /* Tamanho das estrelas */
+    margin: 0 5=px;              /* Margem lateral */
+}
+
+/* Estilo da média em número (ex: 4.2/5) */
+#average-rating .average-score {
+    font-weight: bold;          /* Negrito para destacar a média */
+    font-size: 1.6rem;          /* Tamanho maior para a média */
+    color: #333;                /* Cor escura para o número */
+    margin-top: 10px;            /* Espaço acima da média */
+}
+
+/*Rodapé*/
+
+footer {
+    width: 100%;
+    background-color: var(--orange);
+    transition: background-color 0.3s;
+    height: 250px;
+}
+
+footer .main {
+    width: 100%;
+    height: 200px;
+
+    padding: 20px 0px;
+}
+
+.footer-links {
+    max-width: 1000px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.footer-company,
+.footer-rental,
+.footer-contact,
+.footer-social {
+    color: white;
+    height: 100%;
+    min-height: 100px;
+}
+
+.footer-links h4 {
+    margin-bottom: 10px;
+}
+
+.footer-links h6 {
+    margin-bottom: 8px;
+}
+
+.main .footer-social img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+footer .last {
+    width: 100%;
+    height: 50px;
+    background: var(--blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+/*Resposividade*/
+
+@media (max-width: 576px) {
+    nav ul li {
+        display: none;
+    }
+
+    .header-block img {
+        width: 540px;
+    }
+
+    .header-block .text {
+        position: absolute;
+        bottom: 10%;
+        left: 15%;
+    }
+
+    section .filter-card {
+        width: 390px;
+        padding: 0px 10px;
+    }
+
+    .search-input {
+        max-width: 700px;
+        min-width: 240px;
+    }
+
+    .search-button {
+        max-width: 150px;
+        min-width: 80px;
+    }
+
+    .card-item img {
+        width: 50%;
+        padding: 0px 10px;
+    }
+
+    .card-adm img {
+        width: 50%;
+        padding: 0px 10px;
+    }
+
+    .card-sec img {
+        width: 30%;
+        padding: 0px 10px;
+    }
+
+    .galery {
+        margin-top: 100px;
+    }
+
+    .galery img {
+        width: 390px;
+        padding: 0px 10px;
+    }
+
+    .texto {
+        margin-bottom: 20px;
+    }
+
+    .galery-content {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .features {
+        height: 100%;
+    }
+
+    .feature-card-block {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        height: 100%;
+    }
+
+    footer .main {
+        height: 100%;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        padding-left: 10%;
+    }
+}
