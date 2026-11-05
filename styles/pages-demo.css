@@ -1,0 +1,6 @@
+/* Ajustes exclusivos da demonstração estática do GitHub Pages. */
+.carousel-header,.carousel{overflow:hidden;position:relative}
+.imagens-header,.imagens{display:flex;width:100%;transition:transform .5s ease}
+.carousel-header img,.carousel img{flex:0 0 100%;width:100%;height:auto;aspect-ratio:1000/470;object-fit:cover}
+.button-header,.button{z-index:2}
+@media(max-width:720px){.carousel-header img,.carousel img{aspect-ratio: 16/9}.header-block{height:auto;min-width:0;padding:24px 10px}.feature-card-block{min-width:0;width:100%;height:auto;grid-template-columns:1fr;padding:20px}.feature-card-item{max-width:100%}.card-wrapper{max-width:100%}}
